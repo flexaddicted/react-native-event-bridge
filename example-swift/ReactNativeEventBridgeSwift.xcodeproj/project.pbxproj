@@ -11,6 +11,7 @@
 		697DC9A51EF5AE4400184F9B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 697DC9A41EF5AE4400184F9B /* ViewController.swift */; };
 		697DC9AA1EF5AE4400184F9B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 697DC9A91EF5AE4400184F9B /* Assets.xcassets */; };
 		697DC9AD1EF5AE4400184F9B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 697DC9AB1EF5AE4400184F9B /* LaunchScreen.storyboard */; };
+		A8943FA722B7EEAD00706829 /* BridgeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8943FA622B7EEAD00706829 /* BridgeManager.swift */; };
 		B1B899318A9036C5037F171E /* Pods_ReactNativeEventBridgeSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8DD955D92EFFBDABA4617595 /* Pods_ReactNativeEventBridgeSwift.framework */; };
 /* End PBXBuildFile section */
 
@@ -24,6 +25,7 @@
 		697DC9AE1EF5AE4400184F9B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		855A9CD1F30322C17CE7C075 /* Pods-ReactNativeEventBridgeSwift.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ReactNativeEventBridgeSwift.release.xcconfig"; path = "Pods/Target Support Files/Pods-ReactNativeEventBridgeSwift/Pods-ReactNativeEventBridgeSwift.release.xcconfig"; sourceTree = "<group>"; };
 		8DD955D92EFFBDABA4617595 /* Pods_ReactNativeEventBridgeSwift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ReactNativeEventBridgeSwift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A8943FA622B7EEAD00706829 /* BridgeManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BridgeManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -70,6 +72,7 @@
 			children = (
 				697DC9A21EF5AE4400184F9B /* AppDelegate.swift */,
 				697DC9A41EF5AE4400184F9B /* ViewController.swift */,
+				A8943FA622B7EEAD00706829 /* BridgeManager.swift */,
 				697DC9A91EF5AE4400184F9B /* Assets.xcassets */,
 				697DC9AB1EF5AE4400184F9B /* LaunchScreen.storyboard */,
 				697DC9AE1EF5AE4400184F9B /* Info.plist */,
@@ -97,7 +100,6 @@
 				697DC99C1EF5AE4400184F9B /* Frameworks */,
 				697DC99D1EF5AE4400184F9B /* Resources */,
 				348FC8B88F37A17F603C0303 /* [CP] Embed Pods Frameworks */,
-				2B5725AF26229810127F265C /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -129,6 +131,7 @@
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				English,
 				en,
 				Base,
 			);
@@ -155,34 +158,22 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		2B5725AF26229810127F265C /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ReactNativeEventBridgeSwift/Pods-ReactNativeEventBridgeSwift-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		33311B787B00B93842ED2146 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
 			);
 			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-ReactNativeEventBridgeSwift-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
 		348FC8B88F37A17F603C0303 /* [CP] Embed Pods Frameworks */ = {
@@ -191,9 +182,16 @@
 			files = (
 			);
 			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-ReactNativeEventBridgeSwift/Pods-ReactNativeEventBridgeSwift-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/MSREventBridge/MSREventBridge.framework",
+				"${BUILT_PRODUCTS_DIR}/React/React.framework",
+				"${BUILT_PRODUCTS_DIR}/Yoga/yoga.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MSREventBridge.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/React.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/yoga.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -209,6 +207,7 @@
 			files = (
 				697DC9A51EF5AE4400184F9B /* ViewController.swift in Sources */,
 				697DC9A31EF5AE4400184F9B /* AppDelegate.swift in Sources */,
+				A8943FA722B7EEAD00706829 /* BridgeManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -330,7 +329,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = net.mischneider.ReactNativeEventBridgeSwift;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
 		};
@@ -343,7 +342,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = net.mischneider.ReactNativeEventBridgeSwift;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 5.0;
 			};
 			name = Release;
 		};

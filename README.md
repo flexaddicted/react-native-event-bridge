@@ -30,7 +30,7 @@ Core APIs are subject to change. We encourage people to try this library out and
 
 You can use CocoaPods to manage your native (Swift and Objective-C) dependencies:
 
-1. Add MSREventBridge to your Podfile
+1. Add `MSREventBridge` to your Podfile
 
 `pod 'MSREventBridge', :path => '../node_modules/react-native-event-bridge'`
 

@@ -16,5 +16,6 @@ target 'ReactNativeEventBridgeSwift' do
     'RCTWebSocket',
     'RCTAnimation',
   ]
-  pod 'MSREventBridge', :path => './ReactNativeEventBridgeSwift/ReactNative/node_modules/react-native-event-bridge/MSREventBridge.podspec'
+
+  pod 'MSREventBridge', :path => './ReactNativeEventBridgeSwift/ReactNative/node_modules/react-native-event-bridge'
 end
